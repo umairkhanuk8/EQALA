@@ -1,0 +1,289 @@
+<html>
+    <head>
+        <title></title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style type="text/css">
+      *,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+.text-center {
+  text-align: center;
+}
+
+body{
+  background-color:#000000f5 ;
+}
+.container {
+  overflow: hidden;
+  padding: 10px; 
+}
+.card-slider {
+  width: 280px;
+  position: relative;
+  overflow: visible;
+  margin: 0 auto;
+}
+.card-slider_list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+.card-slider_card {
+  width: 380px;
+  display: inline-block;
+  position: relative;
+  transform: scale(0.8);
+  z-index: 1;
+  flex-shrink: 0;
+  margin-right: -20%;
+}
+.card-slider_card.active-out {
+  animation: activeOutLeft 0.5s ease-in-out;
+}
+.active-in ~ .card-slider_card.active-out {
+  animation: activeOutRight 0.5s ease-in-out;
+}
+.active ~ .card-slider_card {
+  margin-left: -20%;
+  margin-right: 0;
+}
+.card-slider_card.active {
+  transform: scale(1);
+  z-index: 3;
+  margin: 0;
+}
+.card-slider_card.active-in {
+  animation: activeInLeft 0.5s ease-in-out;
+}
+.active-out ~ .card-slider_card.active-in {
+  animation: activeInRight 0.5s ease-in-out;
+}
+.panel {
+  background: #222;
+  padding: 15px 15px 0;
+  box-shadow: 0 2px 15px 0 rgba(67, 134, 179, 0.25);
+  height: 100%;
+  border-radius: 5px;
+  font-size: 18px;
+  font-family: sans-serif;
+}
+
+
+
+.panel h3 {
+  background: #0A9928;
+  color: white;
+  margin: -15px -15px 15px;
+  padding: 30px 15px;
+  border-radius: 4px 4px 0 0;
+}
+.panel ul {
+  list-style-type: none;
+  padding: 0;
+  margin: -15px -15px 0;
+}
+.panel ul li {
+  padding: 10px 15px;
+  border-top: 1px solid #eee;
+}
+.panel ul li span {
+  float: right;
+}
+.panel ul li span.no {
+  color: #ccc;
+}
+@keyframes activeInRight {
+  0% {
+    transform: scale(0.8);
+    z-index: 2;
+  }
+  50% {
+    transform: translateX(20%) scale(0.9);
+    z-index: 3;
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
+@keyframes activeOutLeft {
+  0% {
+    transform: scale(1);
+    z-index: 3;
+  }
+  50% {
+    transform: translateX(-20%) scale(0.9);
+    z-index: 2;
+  }
+  100% {
+    transform: translateX(0) scale(0.8);
+  }
+}
+@keyframes activeInLeft {
+  0% {
+    transform: scale(0.8);
+    z-index: 2;
+  }
+  50% {
+    transform: translateX(-20%) scale(0.9);
+    z-index: 3;
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
+@keyframes activeOutRight {
+  0% {
+    transform: scale(1);
+    z-index: 3;
+  }
+  50% {
+    transform: translateX(20%) scale(0.9);
+    z-index: 2;
+  }
+  100% {
+    transform: translateX(0) scale(0.8);
+  }
+}
+
+    </style>
+<style>
+        </head>
+    <body>
+
+    <style type="text/css">
+      .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+            color: #fff;
+            background-color: #080808;
+        }
+        .navbar-default .navbar-nav>li>a {
+            color: #9d9d9d;
+        }
+    </style>
+  
+  <nav class="navbar navbar-default" style="background-color: #222222;
+    border-color: #222222;border-radius:0px; margin-bottom: 0px;">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">EQALA</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li ><a href="#" >My Qalam <span class="sr-only">(current)</span></a></li>
+      <li ><a href="#">All Qalam <span class="sr-only">(current)</span></a></li>
+
+   <!--      <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li> -->
+      </ul>
+    
+     <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"
+        style="    color: #fff;
+    background-color: #5bda04b3;
+    font-size: 13px;
+    border-radius: 93px;
+    /* display: flex; */
+    justify-content: center;
+    /* align-items: center; */
+    /* flex-direction: column; */
+    padding: 11px;
+    margin-top: 4.5%;
+    font-weight:600; 
+    cursor: auto;"
+        ><span class="glyphicon glyphicon-user"></span> Collabrate</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Editor</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+    
+    <style type="text/css">
+      .centerdiv{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%);
+      }
+
+        .btnjoin button {
+          color: white;
+          padding: 4px;
+          font-size: 20px;
+          background-color: #4aa30d;
+
+          border: none; 
+        }
+
+        button {
+          color: white;
+          padding: 4px;
+          font-size: 20px;
+          background-color: #4aa30d;
+
+          border: none; 
+        }
+
+        .link input {
+          width:100%; 
+          padding: 2px;
+          font-size:20px;
+          color:black;
+        }
+    </style>  
+  
+   <form>
+      <div class="centerdiv">
+
+        
+        <div class="link">
+          Share This link / Paste link Here to Join
+          <input type="text" width="300" name="" value="http://localhost:4000/<%=user%>/<%=collabrationid%>"/>
+        </div>
+
+        
+
+        <div class="btnjoin" style="margin-left: 5px;">
+          <p style="visibility:hidden;">d<p>
+          <button>Join</button>
+        </div>
+
+        
+    </div>
+   </form>
+
+   
+      </body>
+</html>

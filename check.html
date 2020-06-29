@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <label class="textarea"><h2>CSS</h2>
+            <textarea class="css" placeholder="Your CSS here" onclick="htmlEntities('body{  background-color:gold  }')">
+                  body{
+                      background-color:gold
+                  }
+                  h1{
+                      text-align:center;
+                  }
+    </textarea>
+
+                <p onmouseover='htmlEntities(";;;;;")'>
+                            <script>
+                                console.log(htmlEntities("body{  background-color:gold  }"));
+                            </script>
+                </p> 
+
+            </label>
+
+            <script>
+                function htmlEntities(str) {
+
+                           
+                        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+                    }
+            </script>
+
+
+
+    </body>
+</html>

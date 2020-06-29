@@ -1,0 +1,405 @@
+<html>
+    <head>
+        <title></title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style type="text/css">
+      *,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+.text-center {
+  text-align: center;
+}
+
+body{
+  background-color:#000000f5 ;
+}
+.container {
+  overflow: hidden;
+  padding: 10px; 
+}
+.card-slider {
+  width: 280px;
+  position: relative;
+  overflow: visible;
+  margin: 0 auto;
+}
+.card-slider_list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+.card-slider_card {
+  width: 380px;
+  display: inline-block;
+  position: relative;
+  transform: scale(0.8);
+  z-index: 1;
+  flex-shrink: 0;
+  margin-right: -20%;
+}
+.card-slider_card.active-out {
+  animation: activeOutLeft 0.5s ease-in-out;
+}
+.active-in ~ .card-slider_card.active-out {
+  animation: activeOutRight 0.5s ease-in-out;
+}
+.active ~ .card-slider_card {
+  margin-left: -20%;
+  margin-right: 0;
+}
+.card-slider_card.active {
+  transform: scale(1);
+  z-index: 3;
+  margin: 0;
+}
+.card-slider_card.active-in {
+  animation: activeInLeft 0.5s ease-in-out;
+}
+.active-out ~ .card-slider_card.active-in {
+  animation: activeInRight 0.5s ease-in-out;
+}
+.panel {
+  background: #222;
+  padding: 15px 15px 0;
+  box-shadow: 0 2px 15px 0 rgba(67, 134, 179, 0.25);
+  height: 100%;
+  border-radius: 5px;
+  font-size: 18px;
+  font-family: sans-serif;
+}
+
+
+
+.panel h3 {
+  background: #0A9928;
+  color: white;
+  margin: -15px -15px 15px;
+  padding: 30px 15px;
+  border-radius: 4px 4px 0 0;
+}
+.panel ul {
+  list-style-type: none;
+  padding: 0;
+  margin: -15px -15px 0;
+}
+.panel ul li {
+  padding: 10px 15px;
+
+}
+.panel ul li span {
+  float: right;
+}
+.panel ul li span.no {
+  color: #ccc;
+}
+@keyframes activeInRight {
+  0% {
+    transform: scale(0.8);
+    z-index: 2;
+  }
+  50% {
+    transform: translateX(20%) scale(0.9);
+    z-index: 3;
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
+@keyframes activeOutLeft {
+  0% {
+    transform: scale(1);
+    z-index: 3;
+  }
+  50% {
+    transform: translateX(-20%) scale(0.9);
+    z-index: 2;
+  }
+  100% {
+    transform: translateX(0) scale(0.8);
+  }
+}
+@keyframes activeInLeft {
+  0% {
+    transform: scale(0.8);
+    z-index: 2;
+  }
+  50% {
+    transform: translateX(-20%) scale(0.9);
+    z-index: 3;
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
+@keyframes activeOutRight {
+  0% {
+    transform: scale(1);
+    z-index: 3;
+  }
+  50% {
+    transform: translateX(20%) scale(0.9);
+    z-index: 2;
+  }
+  100% {
+    transform: translateX(0) scale(0.8);
+  }
+}
+
+    </style>
+<style>
+        </head>
+    <body>
+
+    <style type="text/css">
+      .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+            color: #fff;
+            background-color: #080808;
+        }
+        .navbar-default .navbar-nav>li>a {
+            color: #9d9d9d;
+        }
+    </style>
+  
+  <nav class="navbar navbar-default" style="background-color: #222222;
+    border-color: #222222;border-radius:0px; margin-bottom: 0px;">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">EQALA</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#" style="    color: #fff;
+    background-color: #5bda04b3;
+    font-size: 13px;
+    border-radius: 93px;
+    /* display: flex; */
+    justify-content: center;
+    /* align-items: center; */
+    /* flex-direction: column; */
+    padding: 11px;
+    margin-top: 4.5%;
+    font-weight:600; 
+    cursor: auto;">My Qalam <span class="sr-only">(current)</span></a></li>
+      <li ><a href="./all">All Qalam <span class="sr-only">(current)</span></a></li>
+
+   <!--      <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li> -->
+      </ul>
+    
+     <ul class="nav navbar-nav navbar-right">
+
+      <li><a href="./collabrationMode"><span class="glyphicon glyphicon-link"></span> Collabrate</a></li>
+
+      <li><a href="./ProEditor"><span class="glyphicon glyphicon-tag"></span> Editor</a></li>
+      <li><a href="./login"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+        
+            <script>
+                let count =0;
+            </script>
+
+    <div class="container">
+      <br><br><br><br>
+  <h2 class="text-center" style="color: white;">My Qalams</h2>
+<div class="card-slider">
+  <ul class="card-slider_list ">
+       <li class="card-slider_card active">
+      <div class="panel" style="background-color: ##222222;">
+        <h3 style="background-color: #222222;"></h3>
+        <ul>
+          <li style="color:#222;">One thing <span style="color:#222">✓</span></li>
+        <li style="color:#222">One thing <span style="color:#222">✓</span></li>
+         <li style="color:#222">One thing <span style="color:#222">✓</span></li>
+          <li style="color:#222">One thing <span style="color:#222">✓</span></li>
+       <li style="color:#222">One thing <span style="color:#222">✓</span></li>
+        </ul>
+      </div>
+    </li>
+   
+
+<%
+        if(result){
+            result.forEach(function(user){ %>
+
+            
+    <li class="card-slider_card">
+      <div class="panel" >
+       
+        <ul>
+          <li style="display: none;">
+             <textarea name="hide" style="display:none;" class="html"><%=user.htmldata%></textarea>
+                <textarea name="hide" style="display:none;" class="css"><%=user.cssdata%></textarea>
+                <textarea name="hide" style="display:none;" class="js"><%=user.jsdata%></textarea>
+              
+          </li>
+            <li style="position: relative;">  
+                                  <form action="/forkpin" method="POST">
+
+                            <input type="hidden"  name="forkid" value="<%=user.id%>" />
+                              <iframe style="width: 100%;height:100% ;" 
+                               id="<%=user.id%>" frameborder="0" style="overflow:hidden ;" allowfullscreen srcdoc="">
+
+                              </iframe>
+                              <button title="Open Pin" style="border:1px solid #222;float: right;margin-top:-5px;font-size:20px;
+                              background-color:#222;color: white;padding: 2px;padding-top:9px;   ">
+                                 < > 
+                              </button>
+
+                            </form>
+
+<script>
+                                        
+                
+    var htmlArea=document.getElementsByClassName('html')[count];
+    var cssArea=document.getElementsByClassName('css')[count];
+    var jsArea=document.getElementsByClassName('js')[count];                       
+    
+var resultHtml=document.getElementById("<%=user.id%>").attributes.getNamedItem('srcdoc');
+
+var consDiv=document.getElementById("console");
+var closeTag='<\/';
+var webconsole='';
+var jq='';
+var befHead='<!DOCTYPE html><html><head>';
+var befCss='<style type="text/css">';
+var aftCss=closeTag+'style>';
+var befHtml='<title>result title'+closeTag+'title>'+closeTag+'head><body>';
+var befJs='<script>';
+var aftJs=closeTag+'script>'+closeTag+'body>'+closeTag+'html>';
+
+
+if (navigator.userAgent.match('Trident|Edge')){
+  alert(' This pen does not work with Microsoft Internet Explorer / Edge');
+  throw'';
+};
+
+
+//MAIN function
+function run(){
+  resultHtml.value=befHead+webconsole+befCss+cssArea.value+aftCss+befHtml+htmlArea.value+jq+befJs+jsArea.value+aftJs;
+};
+
+run();
+            count++;
+                    </script>
+            </li>
+
+          
+        </ul>
+      </div>
+    </li>
+
+
+        <%})}%>
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+   
+  </ul>
+</div>
+  
+  <div class="text-center" style="margin-top:30px; ">
+    <hr style="color: transparent;visibility: hidden;" />
+    <button class="previous"  style="margin-top:-5px;font-size:40px;
+                              background-color:#222;border: none;color: white;padding: 5px;
+                              outline: none;   "><</button>
+    <button class="next"  style="margin-top:-5px;font-size:40px;
+                              background-color:#222;border: none;color: white;padding: 5px;  
+                              outline:none;
+                              ">></button>
+  </
+</div>
+      
+      
+          
+      <script type="text/javascript">
+        const totalCards = $('.card-slider_card').length;
+const cardWidth = $('.card-slider_card:not(.active)').width();
+const activeCardWidth = $('.card-slider_card.active').width();
+
+goToCard($('.card-slider_card.active'));
+
+$('.card-slider_card').click((e) => {
+  let $currentCard = $(e.target).closest('.card-slider_card');
+  goToCard($currentCard); 
+});
+
+$('.previous').click(goToPreviousCard);
+$('.next').click(goToNextCard);
+
+function goToCard($card) {
+  
+  if (!$card.hasClass('active')) {
+      $('.active-out, .active-in').removeClass('active-out active-in');
+    $('.card-slider_card.active').addClass('active-out').removeClass('active');
+    $card.closest('.card-slider_card').addClass('active active-in');
+  }
+  
+  let currentPos = $('.card-slider_card').index($card);
+  let scrollPos = cardWidth * currentPos;
+
+  $('.card-slider_list').css({
+      transform: 'translateX(-'+scrollPos+'px)'
+  }, 200);
+}
+
+function goToNextCard() {
+  let $nextCard = $('.card-slider_card.active').next('.card-slider_card');
+  if ($nextCard.length) {
+    goToCard($nextCard);
+  }
+}
+function goToPreviousCard() {
+  let $previousCard = $('.card-slider_card.active').prev('.card-slider_card');
+  if ($previousCard.length) {
+    goToCard($previousCard);
+  }
+}
+      </script>
+      
+
+      </body>
+</html>

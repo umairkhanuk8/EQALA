@@ -1,0 +1,183 @@
+
+<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+style="background-color:#00e4d0" >
+<div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+<a class="navbar-brand brand-logo" href="index.html">
+  <h2><a href="#intro" class="scrollto" style="font-family: 'Cedarville Cursive';color: #1de099;">Wellcome</a></h2>
+</a>
+<a class="navbar-brand brand-logo-mini" href="index.html">
+
+ <!-- <h2><a href="#intro" class="scrollto" style="font-family: 'Cedarville Cursive';color: #1de099;">Wellcome</a></h2> -->
+
+</a>
+</div>
+
+<div class="navbar-menu-wrapper d-flex align-items-center" style="background-color:#1de099">
+<ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
+<li class="nav-item">
+
+</li>
+<li class="nav-item active">
+
+</li>
+<li class="nav-item">
+
+</li>
+</ul>
+<style>
+    /* width */
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px grey;
+      border-radius: 10px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background:#1de099;
+      border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background:#00e4d0;
+    }
+    </style>
+<ul class="navbar-nav navbar-nav-right" >
+<li class="nav-item dropdown">
+<a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+ <i class="mdi mdi-bell"></i>
+ <span class="count" id="notifymsg" >0</span>
+</a>
+<div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" style="max-height:245px;overflow-y: scroll;" aria-labelledby="messageDropdown">
+ <div class="dropdown-item">
+   <p class="mb-0 font-weight-normal float-left" id="totalmessage">You have 7 unread mails
+   </p>
+   <span class="badge badge-info badge-pill float-right">View all</span>
+ </div>
+ <div class="dropdown-divider"></div>
+
+
+        <div id="container"><center>Loading ...</center></div>
+
+    <script src="socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <script>
+
+           let returnresult = function(data){
+
+               var resultstring;;
+               if(data==0){
+                return resultstring=' <p class="font-weight-light small-text" style="color:green"> You have new message </p>';
+               } else {
+                return resultstring=' <p class="font-weight-light small-text" style="color:red"> Read </p>';
+              }
+
+           }
+
+        // create a new websocket
+        var socket = io.connect('http://localhost:3000');
+        // on message received we print all the data inside the #container div
+        socket.on('notification', function (data) {
+
+        var usersList = "<dl>";
+              var count=0;
+          $.each(data.users,function(index,user){
+
+               count++;
+
+               usersList +='<div class="dropdown-divider"></div>' +
+    '    <a href="/'+user.orderidfk+'"class="dropdown-item preview-item">'
+        +'    <div class="preview-thumbnail">'+
+         ' <img src="images/faces/face2.jpg" alt="image" class="profile-pic">'+
+        '</div>'+
+        '<div class="preview-item-content flex-grow">'+
+   '  <h6 class="preview-subject ellipsis font-weight-medium text-dark">'+`${user.sendername}`+
+   '    <span class="float-right  font-weight-light small-text">'+`${moment(user.time).toNow(true)}`+' ago</span>'+
+     '</h6>'+
+      ''+returnresult(user.notificationstatus)+''+
+   '</div></a>'
+
+  });
+        usersList += "</dl>";
+        totalmes = 'You have ' +count+' unread mails'
+
+        $('#container').html(usersList);
+        $('#totalmessage').html(totalmes)
+        $('#notifymsg').html(count)
+       // $('time').html('Last Update:' + data.time);
+      });
+    </script>
+
+
+ <!-- <div class="dropdown-divider"></div>
+ <a class="dropdown-item preview-item">
+   <div class="preview-thumbnail">
+     <img src="images/faces/face2.jpg" alt="image" class="profile-pic">
+   </div>
+   <div class="preview-item-content flex-grow">
+     <h6 class="preview-subject ellipsis font-weight-medium text-dark">Tim Cook
+       <span class="float-right font-weight-light small-text">15 Minutes ago</span>
+     </h6>
+     <p class="font-weight-light small-text">
+       New product launch
+     </p>
+   </div>
+ </a>
+ <div class="dropdown-divider"></div>
+ <a class="dropdown-item preview-item">
+   <div class="preview-thumbnail">
+     <img src="images/faces/face3.jpg" alt="image" class="profile-pic">
+   </div>
+   <div class="preview-item-content flex-grow">
+     <h6 class="preview-subject ellipsis font-weight-medium text-dark"> Johnson
+       <span class="float-right font-weight-light small-text">18 Minutes ago</span>
+     </h6>
+     <p class="font-weight-light small-text">
+       Upcoming board meeting
+     </p>
+   </div>
+ </a> -->
+</div>
+</li>
+
+<li class="nav-item dropdown d-none d-xl-inline-block">
+<a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+ <span class="profile-text">Hello, <%= Username%> !</span>
+ <img class="img-xs rounded-circle" src='../images/faces/<%=imageaddress%>'+'; alt="Profile image">
+</a>
+<div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+ <a class="dropdown-item p-0">
+   <div class="d-flex border-bottom">
+     <div class="py-3 px-4 d-flex align-items-center justify-content-center">
+       <i class="mdi mdi-bookmark-plus-outline mr-0 text-gray"></i>
+     </div>
+     <div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
+       <i class="mdi mdi-account-outline mr-0 text-gray"></i>
+     </div>
+     <div class="py-3 px-4 d-flex align-items-center justify-content-center">
+       <i class="mdi mdi-alarm-check mr-0 text-gray"></i>
+     </div>
+   </div>
+ </a>
+
+
+ <form action="/Tailor" method="POST">
+ <button type="submit" class="dropdown-item">
+   Sign Out
+ </button>
+ </form>
+
+</div>
+</li>
+</ul>
+<button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+<span class="mdi mdi-menu"></span>
+</button>
+</div>
+</nav>

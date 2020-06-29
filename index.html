@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="style.css"> </link>
+    </head>
+    <body>
+        <body class="Live-Editor">
+            <main class="Live-Editor">
+                  <form class="Live-Editor" id="input">
+                      <label class="textarea head"><h2>HTML head</h2>
+                          <textarea class="head">&lt;meta charset="utf-8"/&gt;</textarea>
+                      </label>
+                      <label class="textarea"><h2>HTML</h2>
+                          <textarea class="html">&lt;h1&gt;On-the-fly HTML / CSS / JavaScript Editor&lt;/h1&gt;</textarea>
+                      </label>
+                      <label class="textarea"><h2>CSS</h2>
+                          <textarea class="css" placeholder="Your CSS here">
+                                body{
+                                    background-color:gold
+                                }
+                                h1{
+                                    text-align:center;
+                                }
+                  </textarea>
+                          </label>
+                          <label class="textarea"><h2>JavaScript</h2>
+                          <textarea class="js" placeholder="Your JavaScript here">console.log(new Date());
+          
+          $('h1').css({color:'red'});  //test jquery toggle</textarea>
+                      </label>
+                <fieldset class="settings">
+                        <label  class="checkbox"> <input id="webconsole" type="checkbox" checked/>activate Web console</label>
+                        <label class="checkbox"> <input id="jquery" type="checkbox"/>activate Jquery</label>
+                        <label class="checkbox"> <input id="showhead" type="checkbox"/>toggle HTML head input</label>
+                </fieldset>
+                  </form>
+                  <iframe class="Live-Editor" id="result" srcdoc="">
+                  </iframe>
+                  <a class="Live-Editor" id="reset">Reset</a>
+                  <a class="Live-Editor" id="save">Save</a>
+                  <h2 class="Live-Editor">Console</h2>
+                  <div class="Live-Editor" id="console"></div>
+              </main>
+          
+              <script src="js.js"></script>
+              
+    </body>
+</html>
